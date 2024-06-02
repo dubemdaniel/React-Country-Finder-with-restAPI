@@ -21,21 +21,19 @@ dropDown.addEventListener("click", e => {
     dropOptions.classList.toggle("show-options")
 })
 
-async function getContries() {
-    const URL = await fetch ('./data.json')
-    // https://restcountries.com/v2.1/all
+const getCountries = async () => {
+    const URL = await fetch('./data.json'); // or use 'https://restcountries.com/v2.1/all'
     const res = await URL.json();
-
+  
     console.log(res);
-    res.forEach(contri => {
-       showCountries(contri); 
+    res.forEach(country => {
+      showCountries(country);
     });
-    
-}
+  };
 
-getContries();
+getCountries();
 
-function showCountries(data) {
+const showCountries = (data) => {
     const country = document.createElement('div');
     country.classList.add('country');
     country.innerHTML = `
